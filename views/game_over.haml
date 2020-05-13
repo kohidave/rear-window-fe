@@ -1,0 +1,28 @@
+!!!
+%html
+    %head
+        %title
+            Rear Window 🕵️‍♀️
+        %meta{charset: "utf-8"}
+        %meta{name: "viewport", content:"width=device-width, initial-scale=1"}
+        %link(href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet")
+        %link(rel="stylesheet" href="/style.css")
+        %link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css")
+    %body
+        .section.top-section
+            .container
+                .columns.is-centered
+                    .column.is-8
+                        %h1.title Game Over 🕵️‍♀️
+                        %p.subtitle= "Game #{@game_description[:game].game_id}"
+
+        .section{style: "background-color:white"}
+            .container
+                .columns
+                    .column.is-8
+                        %h2.title Scores
+                        - players = @game_description[:players].sort_by(&:points).reverse
+                        - players.each_with_index do |player, index|
+                            - award = index < 3 ? ['🥇', '🥈', '🥉'][index] : ''
+                            .content.is-large!= "#{award} <b>#{player.name}</b> got <b>#{player.points}</b> points!"
+

@@ -1,0 +1,61 @@
+!!!
+%html
+    %head
+        %title
+            Rear Window 🕵️‍♀️
+        %meta{charset: "utf-8"}
+        %meta{name: "viewport", content:"width=device-width, initial-scale=1"}
+        %link(href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet")
+        %link(rel="stylesheet" href="/style.css")
+        %link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css")
+        %script(src="https://code.jquery.com/jquery-3.5.1.min.js"   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous")
+        %script(src="/turn.js")
+    %body
+        .section
+            .container
+                .level
+                    .level-item.has-text-centered
+                        %div
+                            .heading
+                                Game
+                            .title= @player.game_id
+                            %input#game-id{type: "text", value: "#{@player.game_id}", style: "display:none;" }
+
+                    .level-item.has-text-centered
+                        %div
+                            .heading
+                                Player
+                            .title= @player.name       
+                    .level-item.has-text-centered
+                        %div
+                            .heading
+                                Time Left
+                            .title= @player.name      
+                    .level-item.has-text-centered
+                        %div
+                            .heading
+                                Points
+                            .title#points= @player.points                                                                                 
+                                   
+        .section.top-section
+            .container
+                .columns.is-centered
+                    .column.is-6
+                        %center
+                            .rear_window_img
+                                %img{src: @player.current_image, style:"max-height:600px; border: 5px white;"}
+                    .column.is-4
+                        %h1.title Detective Toolbox
+                        %p.subtitle select the emoji that are in this photo
+                        .emojis{style: "font-size:4rem;"}
+                            - @player.choice_emojis.each_with_index do |moji, index|
+                                %span.moji=moji
+                        .next-image  
+                            %button.button.is-info.is-outlined.is-large#next-turn-button{ type: 'submit' }
+                                Next Image 👉 
+
+
+
+
+                        
+
