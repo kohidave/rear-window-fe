@@ -25,18 +25,13 @@
                         %div
                             .heading
                                 Player
-                            .title= @player.name       
-                    .level-item.has-text-centered
-                        %div
-                            .heading
-                                Time Left
-                            .title= @player.name      
+                            .title= @player.name
                     .level-item.has-text-centered
                         %div
                             .heading
                                 Points
-                            .title#points= @player.points                                                                                 
-                                   
+                            .title#points= @player.points
+
         .section.top-section
             .container
                 .columns.is-centered
@@ -50,12 +45,12 @@
                         .emojis{style: "font-size:4rem;"}
                             - @player.choice_emojis.each_with_index do |moji, index|
                                 %span.moji=moji
-                        .next-image  
+                        .next-image
                             %button.button.is-info.is-outlined.is-large#next-turn-button{ type: 'submit' }
-                                Next Image 👉 
+                                Next Image 👉
 
 
 
 
-                        
+
 
