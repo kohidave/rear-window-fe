@@ -1,31 +1,48 @@
-GameTable:
-  Type: AWS::DynamoDB::Table
-  Properties:
-    TableName: game
-    AttributeDefinitions:
-      - AttributeName: game_id
-        AttributeType: S
-    KeySchema:
-      - AttributeName: game_id
-        KeyType: HASH
-    ProvisionedThroughput:
-      ReadCapacityUnits: 25
-      WriteCapacityUnits: 25
+Resources:
 
-GamePlayerTable:
-  Type: AWS::DynamoDB::Table
-  Properties:
-    TableName: game_player
-    AttributeDefinitions:
-      - AttributeName: game_id
-        AttributeType: S
-      - AttributeName: user_id
-        AttributeType: S
-    KeySchema:
-      - AttributeName: game_id
-        KeyType: HASH
-      - AttributeName: user_id
-        KeyType: RANGE
-    ProvisionedThroughput:
-      ReadCapacityUnits: 15
-      WriteCapacityUnits: 15
+  GameTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: game
+      AttributeDefinitions:
+        - AttributeName: game_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: game_id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 25
+        WriteCapacityUnits: 25
+
+  GamePlayerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: game_player
+      AttributeDefinitions:
+        - AttributeName: game_id
+          AttributeType: S
+        - AttributeName: user_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: game_id
+          KeyType: HASH
+        - AttributeName: user_id
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 15
+        WriteCapacityUnits: 15
+
+  AdditionalResourcesPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Action:
+          - "dynamodb:*"
+          Resource: "*"
+Output:
+  AdditionalResourcesPolicyArn:
+    Description: ARN of the policy to access additional resources from.
+    Value: !Ref AdditionalResourcesPolicy
