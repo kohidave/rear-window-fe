@@ -29,7 +29,8 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    haml :new_game
+    ENV['GITHUB_TOKEN']
+    #haml :new_game
   end
 
   # Creates a game

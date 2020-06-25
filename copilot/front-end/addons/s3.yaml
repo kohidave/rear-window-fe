@@ -1,5 +1,15 @@
-Resources:
 
+Parameters:
+  App:
+    Type: String
+    Description: Your app name.
+  Env:
+    Type: String
+    Description: The environment name your service is being deployed to.
+  Name:
+    Type: String
+    Description: The name of the service being deployed.
+Resources:
   GameTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -13,7 +23,6 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 25
         WriteCapacityUnits: 25
-
   GamePlayerTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -42,7 +51,7 @@ Resources:
           Action:
           - "dynamodb:*"
           Resource: "*"
-Output:
+Outputs:
   AdditionalResourcesPolicyArn:
     Description: ARN of the policy to access additional resources from.
     Value: !Ref AdditionalResourcesPolicy
