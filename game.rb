@@ -14,14 +14,14 @@ class GameOverError < StandardError; end
 
 class Game
     include Dynamoid::Document
-    table name: :game, key: :game_id
+    table name: ENV['GAME_NAME'], key: :game_id
     field :start_at, :datetime
     field :end_at, :datetime
 end
 
 class Player
     include Dynamoid::Document
-    table name: :game_player, key: :game_id
+    table name: ENV['GAMEPLAYER_NAME'], key: :game_id
     range :user_id, :string
 
     field :name, :string
