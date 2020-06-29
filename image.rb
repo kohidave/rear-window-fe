@@ -16,7 +16,7 @@ end
 
 class ImageService
     def initialize
-        @api_url =  "http://be.#{ENV["ECS_APP_DISCOVERY_ENDPOINT"]}:8080/"
+        @api_url =  "http://be.#{ENV["COPILOT_SERVICE_DISCOVERY_ENDPOINT"]}:8080/"
     end
 
     def image
