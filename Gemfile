@@ -12,7 +12,7 @@ gem "httparty", "~> 0.18.0"
 
 gem "haml", "~> 5.1"
 
-gem 'activesupport', '~> 5.0', '>= 5.0.0.1'
+gem 'activesupport', '~> 6.0'
 
 gem 'dynamoid', '~> 3.5'
 
